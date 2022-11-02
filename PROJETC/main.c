@@ -5,15 +5,21 @@
 
 int main() {
     FILE * inputFile;
-    char ligne[TAILLE_MAX];
+    struct arbre_adverbe arbre;
+    arbre.racine = NULL;
+    char flechie[255]="";
+    char base[255]="";
+    char info[255]="";
+    //int longueur = LongueurFichier(ENTREE);
+    for (int i = 0; i < 80; i++)
+    {
+
+    }
     inputFile = fopen (ENTREE, "r");
     if (inputFile == NULL){
         printf("erreur d'ouverture de fichier");
     }
-    while(fgets(ligne, TAILLE_MAX, inputFile)!= NULL){
-        printf("%s", ligne);
-    }
-
+    extraireFichier(ENTREE,flechie,base,info);
     fclose(inputFile);
     return 0;
 }
