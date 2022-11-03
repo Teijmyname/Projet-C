@@ -3,19 +3,29 @@
 //
 
 #include "node.h"
-nodeAdverbe createNodeAdv(char lettre)
+struct arbre_adverbe createEmptyTree(){
+
+    struct arbre_adverbe arbre;
+    arbre.racine=NULL;
+    return arbre;
+
+}
+nodeAdverbe createNodeAdv(char lettre, int taille)
 {
     nodeAdverbe nouv;
 
     nouv = (nodeAdverbe)malloc(sizeof(struct node_adverbe));
     nouv->lettre = lettre;
     nouv->suite = nouv->autre = NULL;
+    nouv->feuilleAdverbe = (char *)malloc(taille*sizeof (char));
 
     return nouv;
 }
 
 void extraireFichier(char* Fichier, char* flechie, char* base, char* info) {
     errno_t err;
+    struct arbre_adverbe arbre;
+    arbre = createEmptyTree();
     int i = 0;
     FILE *Fi = fopen(Fichier, "r");
     while (err = fscanf_s(Fi, "%s %s %s", flechie, 255, base, 255, info, 255) != EOF) {
@@ -29,34 +39,54 @@ void extraireFichier(char* Fichier, char* flechie, char* base, char* info) {
             upArbreAdverbe(base);
         if(info[0]=='A'&&info[1]=='d'&&info[2]=='j')
             upArbreAdjectif();
+
+*/
+        if(info[0]=='A'&&info[1]=='d'&&info[2]=='v')
+            upArbreAdverbe(base, arbre);
         else
-            printf("erreur dans l'impémentation de l'arbre");
-     */
+            printf("   pas un adverbe\n");
         i++;
     }
         fclose(Fi);
+    return;
 }
-void upArbreAdverbe(char* base){
-    struct arbre_adverbe arbre;
+void upArbreAdverbe(char* base,struct arbre_adverbe arbre){
     nodeAdverbe nouv;
+    char* feuille;
     nouv = arbre.racine;
-
+    int i;
+    int taille=0;
+    for (i=0;base[i]!='\0';i++){
+        taille ++;
+    }
     if(arbre.racine == NULL){
-        for (int i=0;base[i]!='\0';i++){
-            nouv = createNodeAdv(base[i]);
+        for (i=0;base[i]!='\0';i++){
+            nouv = createNodeAdv(base[i],taille);
+            printf("%c",nouv->lettre);
             nouv = nouv->suite;
+
         }
-        nouv->feuilleAdverbe = base;
+
+        for(i = 0; i<taille;i++){
+            nouv->feuilleAdverbe[i] = base[i];
+            printf("ici");
+        }
+        printf("%c",nouv->feuilleAdverbe);
+
     }
     else{
-        for(int i=0; i<base[i]!='\0'; i++){
-            while(nouv->lettre != base[i] || nouv!=NULL) {
+
+        for( i=0; base[i]!='\0'; i++){
+            while(nouv->lettre != base[i] && nouv!=NULL) {
                 nouv = nouv->autre;
             }
             if(nouv == NULL){
-                nouv = createNodeAdv(base[i]);
+                nouv = createNodeAdv(base[i],taille);
             }
+            printf("%c",nouv->lettre);
             nouv=nouv->suite;
         }
+        nouv->feuilleAdverbe = base;
     }
+    return;
 }

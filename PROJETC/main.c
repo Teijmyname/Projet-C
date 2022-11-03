@@ -5,8 +5,7 @@
 
 int main() {
     FILE * inputFile;
-    struct arbre_adverbe arbre;
-    arbre.racine = NULL;
+
     char flechie[255]="";
     char base[255]="";
     char info[255]="";

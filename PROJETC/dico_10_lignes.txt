@@ -1,6 +1,7 @@
 stabilimetre	stabilimetre	Nom:Mas+SG
 stabilisaient	stabiliser	Ver:IImp+PL+P3
 stabilisais	stabiliser	Ver:IImp+SG+P1:IImp+SG+P2
+bien    bien    Adv
 stabilisai	stabiliser	Ver:IPSim+SG+P1
 stabilisait	stabiliser	Ver:IImp+SG+P3
 stabilisames	stabiliser	Ver:IPSim+PL+P1

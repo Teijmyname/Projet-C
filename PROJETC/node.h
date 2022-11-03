@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <corecrt.h>
+#include <string.h>
 #ifndef PROJETC_NODE_H
 #define PROJETC_NODE_H
 //Structure de tableaux pour les nœuds
@@ -22,9 +23,10 @@ typedef struct arbre_adverbe
 {
     struct node_adverbe* racine;
 }*arbreAdv;
+struct arbre_adverbe createEmptyTree();
 void MemoriserUneLigne( char*, char*);
 int LongueurFichier( char * );
 void extraireFichier(char* , char* , char* , char* );
-void upArbreAdverbe(char* );
-nodeAdverbe createNodeAdv(char );
+void upArbreAdverbe(char* ,struct arbre_adverbe);
+nodeAdverbe createNodeAdv(char ,int);
 #endif //PROJETC_NODE_H
