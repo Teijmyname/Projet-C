@@ -5,10 +5,9 @@
 
 int main() {
     FILE * inputFile;
-
-    char flechie[255]="";
-    char base[255]="";
-    char info[255]="";
+    char* flechie= malloc(255*sizeof(char)); //[255]=""
+    char* base= malloc(255*sizeof(char));
+    char* info= malloc(255*sizeof(char));
     //int longueur = LongueurFichier(ENTREE);
     for (int i = 0; i < 80; i++)
     {
@@ -20,6 +19,10 @@ int main() {
     }
     extraireFichier(ENTREE,flechie,base,info);
     fclose(inputFile);
+    free(flechie);
+    free(info);
+    free(base);
+
     return 0;
 }
 
