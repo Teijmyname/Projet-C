@@ -2,8 +2,8 @@
 // Created by Teij Jayantilal on 24/10/2022.
 #include <stdio.h>
 #include <stdlib.h>
-//#include <corecrt.h>
 #include <string.h>
+#include <time.h>
 #ifndef PROJETC_NODE_H
 #define PROJETC_NODE_H
 //Structure de tableaux pour les nœuds
@@ -21,11 +21,15 @@ typedef struct node_adverbe
 //structure de l'arbre(racine)
 typedef struct arbre_adverbe
 {
-    struct node_adverbe* racine;
+    nodeAdverbe racine;
 }*arbreAdv;
 struct arbre_adverbe createEmptyTree();
-//void MemoriserUneLigne( char*, char*);
 void extraireFichier(char* , char* , char* , char* );
 void upArbreAdverbe(char* ,struct arbre_adverbe*);
 nodeAdverbe createNodeAdv(char ,int);
+nodeAdverbe createLastNodeAdv(char ,int);
+char* createFeuilleAdv(char* ,int);
+void rechercheAdv( nodeAdverbe);
+int aleatoireAutre(int NbAutre);
+void freeNodeAdv(nodeAdverbe node);
 #endif //PROJETC_NODE_H
