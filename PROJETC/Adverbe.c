@@ -2,7 +2,7 @@
 // Created by Teij Jayantilal on 24/10/2022.
 //
 
-#include "node.h"
+#include "Adverbe.h"
 //creation de nouveau noeud
 nodeAdverbe createNodeAdv(char theLettre, int theTaille)
 {
@@ -15,41 +15,6 @@ nodeAdverbe createNodeAdv(char theLettre, int theTaille)
     printf("creation du noeud %c \n" ,theLettre);
 
     return nouv;
-    /*struct node_adverbe nouv = {.feuilleAdverbe=NULL, .lettre = theLettre, .suite = NULL, .autre =NULL};
-    nodeAdverbe node;
-    printf("creation du noeud %c \n" ,nouv.lettre);
-    node = &nouv;
-    return node;*/
-}
-//fonction qui permet d'extaire les mot d'une ligne dans 3 tableaux puis de les placer dans les arbres associés
-void extraireFichier(char* Fichier, char* flechie, char* base, char* info) {
-    errno_t err;
-    struct arbre_adverbe arbre;
-    arbre.racine = NULL;
-    int i = 0;
-    FILE *Fi = fopen(Fichier, "r");
-    while (err = fscanf_s(Fi, "%s %s %s", flechie, 255, base, 255, info, 255) != EOF) {
-        printf("%s %s %s\n", flechie, base, info);
-
-        /*if(info[0]=='N')
-            upArbreNom();
-        if(info[0]=='V')
-            upArbreVerbe();
-        if(info[0]=='A'&&info[1]=='d'&&info[2]=='j')
-            upArbreAdjectif();
-
-*/
-        if(info[0]=='A'&&info[1]=='d'&&info[2]=='v')
-            upArbreAdverbe(base, &arbre);
-        else
-            printf("   pas un adverbe\n");
-        i++;
-    }
-    fclose(Fi);
-    rechercheAdv(arbre.racine);
-    freeNodeAdv(arbre.racine);
-
-    return;
 }
 void freeNodeAdv(nodeAdverbe node){
     if(node->suite)
@@ -104,32 +69,31 @@ char* createFeuilleAdv(char* base, int taille) {
     return feuille;
 }
 void rechercheAdv(nodeAdverbe node){
-    printf("debut recherche adv\n");
     int nbAutre =0;
     nodeAdverbe curseur = node;
     while(curseur->autre){
         nbAutre ++;
         curseur=curseur->autre;
     }
-    printf("nbAutre = %d\n",nbAutre);
+    //printf("nbAutre = %d\n",nbAutre);
     if(nbAutre != 0) {
         int i = 0;
-        int rd = aleatoireAutre(nbAutre);
+        int rd = aleatoireAutre(nbAutre+1);
         while (i != rd) {
             i++;
             node = node->autre;
         }
     }
-    printf("%c\n",node->lettre);
+    //printf("%c\n",node->lettre);
     if(node->feuilleAdverbe){
         if(!node->suite) {
-            printf("%s", node->feuilleAdverbe);
+            printf("%s ", node->feuilleAdverbe);
             return;
         }
         else{
-            int continuer = aleatoireAutre(1);
+            int continuer = aleatoireAutre(2);
             if(continuer == 0){
-                printf("%s",node->feuilleAdverbe);
+                printf("%s ",node->feuilleAdverbe);
                 return;
             }
             else{
@@ -148,18 +112,8 @@ void rechercheAdv(nodeAdverbe node){
     }
     return;
 
-    /*}
-    if(node->suite){
-        int rd = aleatoireAutre(2);
-        if(rd==0)
-            printf("s",node->feuilleAdverbe);
-        else
-            node = node->suite;
-    }*/
-
 }
 int aleatoireAutre(int NbAutre){
-    int tailleAutre = rand() % NbAutre+1;
-    printf("%d",tailleAutre);
-    return tailleAutre ;
+    int tailleAutre = rand() % NbAutre;
+    return tailleAutre;
 }
