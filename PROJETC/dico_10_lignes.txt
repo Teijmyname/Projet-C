@@ -1,0 +1,15 @@
+stabilimetres 	stabilimetre	Nom:Mas+SG
+stabilisaient	stabiliser	Ver:IImp+PL+P3
+stabilisais	stabiliser	Ver:IImp+SG+P1:IImp+SG+P2
+bien    bien    Adv
+stabilisai	stabiliser	Ver:IPSim+SG+P1
+abandonnes	abandonne	Nom:Mas+PL
+stabilisait	stabiliser	Ver:IImp+SG+P3
+char    char    Adv
+stabilisames	stabiliser	Ver:IPSim+PL+P1
+charue  charue  Adv
+abaissee	abaissee	Nom:Fem+SG
+lentement   lentement   Adv
+fromage    fromage    Nom:Mas+SG
+abat-voix	abat-voix	Nom:Mas+InvPL
+

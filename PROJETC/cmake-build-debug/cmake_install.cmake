@@ -1,4 +1,4 @@
-# Install script for directory: /Users/teijjayantilal/Desktop/L2/INFORMATIQUE/PROJETC
+# Install script for directory: /Users/teijjayantilal/Desktop/PROJETC/Projet-C-main/PROJETC
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/teijjayantilal/Desktop/L2/INFORMATIQUE/PROJETC/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/teijjayantilal/Desktop/PROJETC/Projet-C-main/PROJETC/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

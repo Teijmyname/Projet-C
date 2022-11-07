@@ -42,7 +42,7 @@ rule C_EXECUTABLE_LINKER__ProjetC_Debug
 # Rule for re-running cmake.
 
 rule RERUN_CMAKE
-  command = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/teijjayantilal/Desktop/L2/INFORMATIQUE/PROJETC -B/Users/teijjayantilal/Desktop/L2/INFORMATIQUE/PROJETC/cmake-build-debug
+  command = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --regenerate-during-build -S/Users/teijjayantilal/Desktop/PROJETC/Projet-C-main/PROJETC -B/Users/teijjayantilal/Desktop/PROJETC/Projet-C-main/PROJETC/cmake-build-debug
   description = Re-running CMake...
   generator = 1
 
