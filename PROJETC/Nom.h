@@ -14,21 +14,24 @@ typedef struct node_nom{
     char lettre;
     struct node_nom *autre;
     struct feuilleNom *feuilleNomPointeur;
-    int taille;
 }*nodeNom;
 struct feuilleNom{
     char* femSG;
     char* femPL;
     char* masSG;
     char* masPL;
-    char* invariable;
+    char* invariableSG;
+    char* invariablePL;
 };
 struct arbre_nom
 {
     nodeNom racine;
 };
-void rechercheNom(nodeNom);
+//prototypes des fonctions de nom
+void rechercheNom(nodeNom, int*);
+void rechercheAccordNom(nodeNom ,int *, int* );
 void freeNodeNom(nodeNom );
 nodeNom createNodeNom(char );
 void upArbreNom(char*, char*, char*, struct arbre_nom*);
+void meme();
 #endif //MAIN_C_NOM_H
