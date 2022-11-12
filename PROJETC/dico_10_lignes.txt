@@ -9,7 +9,9 @@ char    char    Adv
 stabilisames	stabiliser	Ver:IPSim+PL+P1
 charue  charue  Adv
 abaissee	abaissee	Nom:Fem+SG
+jointees	jointe	Adj:Fem+PL
 lentement   lentement   Adv
 fromage    fromage    Nom:Mas+SG
 abat-voix	abat-voix	Nom:Mas+InvPL
+jesuitique	jesuitique	Adj:InvGen+SG
 

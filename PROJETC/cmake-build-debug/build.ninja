@@ -67,6 +67,18 @@ build CMakeFiles/ProjetC.dir/Nom.c.obj: C_COMPILER__ProjetC_Debug C$:/Users/Roma
   OBJECT_DIR = CMakeFiles\ProjetC.dir
   OBJECT_FILE_DIR = CMakeFiles\ProjetC.dir
 
+build CMakeFiles/ProjetC.dir/Adjectif.c.obj: C_COMPILER__ProjetC_Debug C$:/Users/Romain$ SAMSON/Desktop/Projet-C/PROJETC/Adjectif.c || cmake_object_order_depends_target_ProjetC
+  DEP_FILE = CMakeFiles\ProjetC.dir\Adjectif.c.obj.d
+  FLAGS = -g -std=gnu99
+  OBJECT_DIR = CMakeFiles\ProjetC.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetC.dir
+
+build CMakeFiles/ProjetC.dir/Verbe.c.obj: C_COMPILER__ProjetC_Debug C$:/Users/Romain$ SAMSON/Desktop/Projet-C/PROJETC/Verbe.c || cmake_object_order_depends_target_ProjetC
+  DEP_FILE = CMakeFiles\ProjetC.dir\Verbe.c.obj.d
+  FLAGS = -g -std=gnu99
+  OBJECT_DIR = CMakeFiles\ProjetC.dir
+  OBJECT_FILE_DIR = CMakeFiles\ProjetC.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target ProjetC
@@ -75,7 +87,7 @@ build CMakeFiles/ProjetC.dir/Nom.c.obj: C_COMPILER__ProjetC_Debug C$:/Users/Roma
 #############################################
 # Link the executable ProjetC.exe
 
-build ProjetC.exe: C_EXECUTABLE_LINKER__ProjetC_Debug CMakeFiles/ProjetC.dir/main.c.obj CMakeFiles/ProjetC.dir/Adverbe.c.obj CMakeFiles/ProjetC.dir/Nom.c.obj
+build ProjetC.exe: C_EXECUTABLE_LINKER__ProjetC_Debug CMakeFiles/ProjetC.dir/main.c.obj CMakeFiles/ProjetC.dir/Adverbe.c.obj CMakeFiles/ProjetC.dir/Nom.c.obj CMakeFiles/ProjetC.dir/Adjectif.c.obj CMakeFiles/ProjetC.dir/Verbe.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\ProjetC.dir
