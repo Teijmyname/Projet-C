@@ -140,21 +140,25 @@ void rechercheAccordAdjectif(nodeAdjectif node,int *accord, int* correct){
             }
             if ((*accord == 2 || *accord == 0) && node->feuilleAdjectifPointeur->masSG != NULL) {
                 printf("%s ", node->feuilleAdjectifPointeur->masSG);
+                *accord = 2;
                 *correct = 1;
                 return;
             }
             if ((*accord == 3 || *accord==1)&& node->feuilleAdjectifPointeur->masPL != NULL) {
                 printf("%s ", node->feuilleAdjectifPointeur->masPL);
+                *accord = 3;
                 *correct = 1;
                 return;
             }
             if ((*accord == 4 || *accord == 0) && node->feuilleAdjectifPointeur->femSG != NULL) {
                 printf("%s ", node->feuilleAdjectifPointeur->femSG);
+                *accord = 4;
                 *correct = 1;
                 return;
             }
             if ((*accord == 5 || *accord==1)&& node->feuilleAdjectifPointeur->femPL != NULL) {
                 printf("%s ", node->feuilleAdjectifPointeur->femPL);
+                *accord = 4;
                 *correct = 1;
                 return;
             }
@@ -175,21 +179,25 @@ void rechercheAccordAdjectif(nodeAdjectif node,int *accord, int* correct){
                 }
                 if ((*accord == 2 || *accord == 0) && node->feuilleAdjectifPointeur->masSG != NULL) {
                     printf("%s ", node->feuilleAdjectifPointeur->masSG);
+                    *accord = 2;
                     *correct = 1;
                     return;
                 }
                 if ((*accord == 3 || *accord==1)&& node->feuilleAdjectifPointeur->masPL != NULL) {
                     printf("%s ", node->feuilleAdjectifPointeur->masPL);
+                    *accord = 3;
                     *correct = 1;
                     return;
                 }
                 if ((*accord == 4 || *accord == 0) && node->feuilleAdjectifPointeur->femSG != NULL) {
                     printf("%s ", node->feuilleAdjectifPointeur->femSG);
+                    *accord = 4;
                     *correct = 1;
                     return;
                 }
                 if ((*accord == 5 || *accord==1)&& node->feuilleAdjectifPointeur->femPL != NULL) {
                     printf("%s ", node->feuilleAdjectifPointeur->femPL);
+                    *accord = 5;
                     *correct = 1;
                     return;
                 }
@@ -202,7 +210,7 @@ void rechercheAccordAdjectif(nodeAdjectif node,int *accord, int* correct){
     }
     else{
         if(!node->suite)
-            printf("erreur dans la recherche pas de suite");
+            return;
         else{
             node = node->suite;
             rechercheAccordAdjectif(node, accord, correct);

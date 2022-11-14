@@ -7,7 +7,9 @@
 #define ENTREE "C:\\Users\\Romain SAMSON\\Desktop\\Projet-C\\PROJETC\\dico_10_lignes.txt"
 #define TOUS "C:\\Users\\Romain SAMSON\\Desktop\\Projet-C\\PROJETC\\dictionnaire_non_accentue.txt"
 //initialisation des variables globales
+//accord permet de savoir l'accord à utilisé en paramètre de fonction
 int accord = 0;
+//correct est une variable utilisé lors de la recherche dans un arbre, mis à 1 si tout est correct
 int correct = 0;
 int main() {
     //initialisation des variables
@@ -26,7 +28,7 @@ int main() {
     int choix1;
     int i;
     int taille;
-    //Ouverture du fichier séléctioné
+    //Ouverture du fichier séléctioné et séparation de chaque ligne en trois chaines de caractères
     FILE *Fi = fopen(TOUS, "r");
     while ( fscanf_s(Fi, "%s %s %s", flechie, 255, base, 255, info, 255) != EOF) {
         taille =0;
@@ -122,7 +124,7 @@ int main() {
             rechercheAccordAdjectif(node, &accord, &correct);
         }
     }
-    // on free tout l'espace qu'on a alloué
+    // on libère tout l'espace qu'on a alloué
     freeNodeAdjectif(arbreAdj.racine);
     freeNodeAdv(arbreAdv.racine);
     freeNodeNom(arbreN.racine);
