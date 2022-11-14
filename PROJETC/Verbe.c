@@ -131,7 +131,7 @@ void rechercheAccordVerbe(nodeVerbe node,int *accord, int *correct){
     }
     else{
         if(!node->suite)
-            printf("erreur dans la recherche pas de suite");
+            return;
         else{
             node = node->suite;
             rechercheAccordVerbe(node, accord, correct);

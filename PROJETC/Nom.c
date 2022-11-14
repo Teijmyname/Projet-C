@@ -250,21 +250,25 @@ void rechercheAccordNom(nodeNom node,int *accord, int* correct){
             }
             if ((*accord == 2 || *accord == 0) && node->feuilleNomPointeur->masSG != NULL) {
                 printf("%s ", node->feuilleNomPointeur->masSG);
+                *accord = 2;
                 *correct = 1;
                 return;
             }
             if ((*accord == 3 || *accord==1) && node->feuilleNomPointeur->masPL != NULL) {
                 printf("%s ", node->feuilleNomPointeur->masPL);
+                *accord = 3;
                 *correct = 1;
                 return;
             }
             if ((*accord == 4 || *accord == 0) && node->feuilleNomPointeur->femSG != NULL) {
                 printf("%s ", node->feuilleNomPointeur->femSG);
+                *accord = 4;
                 *correct = 1;
                 return;
             }
             if ((*accord == 5 || *accord==1) && node->feuilleNomPointeur->femPL != NULL) {
                 printf("%s ", node->feuilleNomPointeur->femPL);
+                *accord = 5;
                 *correct = 1;
                 return;
             }
@@ -285,21 +289,25 @@ void rechercheAccordNom(nodeNom node,int *accord, int* correct){
                 }
                 if ((*accord == 2 || *accord == 0) && node->feuilleNomPointeur->masSG != NULL) {
                     printf("%s ", node->feuilleNomPointeur->masSG);
+                    *accord = 2;
                     *correct = 1;
                     return;
                 }
                 if ((*accord == 3 || *accord==1) && node->feuilleNomPointeur->masPL != NULL) {
                     printf("%s ", node->feuilleNomPointeur->masPL);
+                    *accord = 3;
                     *correct = 1;
                     return;
                 }
                 if ((*accord == 4 || *accord == 0) && node->feuilleNomPointeur->femSG != NULL) {
                     printf("%s ", node->feuilleNomPointeur->femSG);
+                    *accord = 4;
                     *correct = 1;
                     return;
                 }
                 if ((*accord == 5 || *accord==1)&& node->feuilleNomPointeur->femPL != NULL) {
                     printf("%s ", node->feuilleNomPointeur->femPL);
+                    *accord = 5;
                     *correct = 1;
                     return;
                 }
@@ -312,7 +320,7 @@ void rechercheAccordNom(nodeNom node,int *accord, int* correct){
     }
     else{
         if(!node->suite){
-            printf("erreur dans la recherche pas de suite ");
+            return;
         }
         else{
             node = node->suite;
