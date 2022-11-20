@@ -260,7 +260,7 @@ void rechercheNom(nodeNom node, int *accord) {
     }
     else{
         if(!node->suite)
-            printf("erreur dans la recherche pas de suite");
+            return;
         else{
             node = node->suite;
             rechercheNom(node, accord);
