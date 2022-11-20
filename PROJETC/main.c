@@ -5,7 +5,7 @@
 #include "Verbe.h"
 //Définition des constantes regroupants les fichiers txt à ouvrir
 //#define ENTREE "C:\\Users\\Romain SAMSON\\Desktop\\Projet-C\\PROJETC\\dico_10_lignes.txt"
-#define TOUS "dictionnaire_non_accentue.txt"
+#define TOUS "C:\\Users\\Romain SAMSON\\Desktop\\Projet-C\\PROJETC\\dictionnaire_non_accentue.txt"
 //initialisation des variables globales
 //accord permet de savoir l'accord à utilisé en paramètre de fonction
 int accord = 0;
