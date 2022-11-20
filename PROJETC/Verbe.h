@@ -25,4 +25,5 @@ void freeNodeVerbe(nodeVerbe);
 nodeVerbe createNodeVerbe(char);
 void upArbreVerbe(char* , char* , char* , struct arbre_verbe* );
 void rechercheAccordVerbe(nodeVerbe ,int*, int*);
+void rechercheBaseVerbe(nodeVerbe );
 #endif //MAIN_C_VERBE_H

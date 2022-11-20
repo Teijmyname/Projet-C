@@ -27,5 +27,4 @@ char* createFeuilleAdv(char* ,int);
 void rechercheAdv( nodeAdverbe);
 int aleatoireAutre(int );
 void freeNodeAdv(nodeAdverbe );
-
 #endif //PROJETC_NODE_H

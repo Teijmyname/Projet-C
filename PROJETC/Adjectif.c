@@ -110,6 +110,52 @@ void upArbreAdjectif(char* flechie, char* base, char* info, struct arbre_adjecti
     return;
 }
 
+//recherche aléatoirement une forme de base d'un adjectif
+void rechercheBaseAdj(nodeAdjectif node) {
+    int nbAutre = 0;
+    nodeAdjectif curseur = node;
+    while (curseur->autre) {
+        nbAutre++;
+        curseur = curseur->autre;
+    }
+    if (nbAutre != 0) {
+        int i = 0;
+        int rd = aleatoireAutre(nbAutre + 1);
+        while (i != rd) {
+            i++;
+            node = node->autre;
+        }
+    }
+    printf("%c",node->lettre);
+    if (node->feuilleAdjectifPointeur->invariableSG != NULL || node->feuilleAdjectifPointeur->invariablePL != NULL ||
+        node->feuilleAdjectifPointeur->masSG != NULL || node->feuilleAdjectifPointeur->masPL != NULL ||
+        node->feuilleAdjectifPointeur->femSG != NULL || node->feuilleAdjectifPointeur->femPL != NULL) {
+        if (!node->suite) {
+            return;
+
+        }
+
+        else {
+            int continuer = aleatoireAutre(2);
+            //si continuer = 0 alors on s'arrete au noeud où il y a une forme conjugué sinon on continue
+            if (continuer == 0) {
+                return;
+            } else {
+                node = node->suite;
+                rechercheBaseAdj(node);
+            }
+        }
+    }
+    else{
+        if(!node->suite)
+            return;
+        else{
+            node = node->suite;
+            rechercheBaseAdj(node);
+        }
+    }
+    return;
+}
 // recherche Adjectif avec l'accord du nom
 void rechercheAccordAdjectif(nodeAdjectif node,int *accord, int* correct){
     int nbAutre =0;
@@ -128,17 +174,21 @@ void rechercheAccordAdjectif(nodeAdjectif node,int *accord, int* correct){
     }
     if(node->feuilleAdjectifPointeur->invariableSG!=NULL || node->feuilleAdjectifPointeur->invariablePL!=NULL || node->feuilleAdjectifPointeur->masSG!=NULL || node->feuilleAdjectifPointeur->masPL!=NULL || node->feuilleAdjectifPointeur->femSG!=NULL ||node->feuilleAdjectifPointeur->femPL!=NULL){
         if(!node->suite) {
-            if(node->feuilleAdjectifPointeur->invariableSG!=NULL && *accord == 0) {
+            if(node->feuilleAdjectifPointeur->invariableSG!=NULL && *accord == 0)
+            //accord à 0 correspond à l'accord invariable singulier
+            {
                 printf("%s ", node->feuilleAdjectifPointeur->invariableSG);
                 *correct = 1;
                 return;
             }
             if(node->feuilleAdjectifPointeur->invariablePL!=NULL && *accord == 1) {
+                //accord à 1 correspond à l'accord invariable pluriel
                 printf("%s ", node->feuilleAdjectifPointeur->invariablePL);
                 *correct = 1;
                 return;
             }
             if ((*accord == 2 || *accord == 0) && node->feuilleAdjectifPointeur->masSG != NULL) {
+                //accord à 2 correspond à l'accord masculin pluriel
                 printf("%s ", node->feuilleAdjectifPointeur->masSG);
                 *accord = 2;
                 *correct = 1;
@@ -167,6 +217,7 @@ void rechercheAccordAdjectif(nodeAdjectif node,int *accord, int* correct){
 
             int continuer = aleatoireAutre(2);
             if(continuer == 0){
+                //si continuer = 0 alors on s'arrete au noeud où il y a une forme conjugué sinon on continue
                 if(node->feuilleAdjectifPointeur->invariableSG!=NULL && *accord == 0) {
                     printf("%s ", node->feuilleAdjectifPointeur->invariableSG);
                     *correct = 1;

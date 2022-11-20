@@ -115,7 +115,54 @@ void upArbreNom(char* flechie, char* base, char* info, struct arbre_nom* arbre) 
     }
     return;
 }
-//
+//ici on va rechercher un forme de base aléatoire d'un nom
+void rechercheBaseNom(nodeNom node) {
+    int nbAutre = 0;
+    nodeNom curseur = node;
+    while (curseur->autre) {
+        nbAutre++;
+        curseur = curseur->autre;
+    }
+    if (nbAutre != 0) {
+        int i = 0;
+        int rd = aleatoireAutre(nbAutre + 1);
+        while (i != rd) {
+            i++;
+            node = node->autre;
+        }
+    }
+    printf("%c",node->lettre);
+    if (node->feuilleNomPointeur->invariableSG != NULL || node->feuilleNomPointeur->invariablePL != NULL ||
+        node->feuilleNomPointeur->masSG != NULL || node->feuilleNomPointeur->masPL != NULL ||
+        node->feuilleNomPointeur->femSG != NULL || node->feuilleNomPointeur->femPL != NULL) {
+        if (!node->suite) {
+            return;
+
+        }
+
+        else {
+            int continuer = aleatoireAutre(2);
+            //si continuer = 0 alors on s'arrete au noeud où il y a une forme conjugué sinon on continue
+            if (continuer == 0) {
+                return;
+            } else {
+                node = node->suite;
+                rechercheBaseNom(node);
+            }
+        }
+    }
+    else{
+        if(!node->suite)
+            return;
+        else{
+            node = node->suite;
+            rechercheBaseNom(node);
+        }
+    }
+    return;
+}
+
+//recherche du premier nom qui va permettre de faire l'accord de la phrase grace à la variable globale "accord"
 void rechercheNom(nodeNom node, int *accord) {
     int nbAutre = 0;
     nodeNom curseur = node;
@@ -137,32 +184,32 @@ void rechercheNom(nodeNom node, int *accord) {
         if (!node->suite) {
             int rd = aleatoireAutre(6);
             if (rd == 0 && node->feuilleNomPointeur->invariableSG != NULL) {
-                printf("%s ", node->feuilleNomPointeur->invariableSG);
+                printf("Le %s ", node->feuilleNomPointeur->invariableSG);
                 *accord = 0;
                 return;
             }
             if (rd == 1 && node->feuilleNomPointeur->invariablePL != NULL) {
-                printf("%s ", node->feuilleNomPointeur->invariablePL);
+                printf("Les %s ", node->feuilleNomPointeur->invariablePL);
                 *accord = 1;
                 return;
             }
             if (rd == 2 && node->feuilleNomPointeur->masSG != NULL) {
-                printf("%s ", node->feuilleNomPointeur->masSG);
+                printf("Le %s ", node->feuilleNomPointeur->masSG);
                 *accord = 2;
                 return;
             }
             if (rd == 3 && node->feuilleNomPointeur->masPL != NULL) {
-                printf("%s ", node->feuilleNomPointeur->masPL);
+                printf("Les %s ", node->feuilleNomPointeur->masPL);
                 *accord = 3;
                 return;
             }
             if (rd == 4 && node->feuilleNomPointeur->femSG != NULL) {
-                printf("%s ", node->feuilleNomPointeur->femSG);
+                printf("La %s ", node->feuilleNomPointeur->femSG);
                 *accord = 4;
                 return;
             }
             if (rd == 5 && node->feuilleNomPointeur->femPL != NULL) {
-                printf("%s ", node->feuilleNomPointeur->femPL);
+                printf("Les %s ", node->feuilleNomPointeur->femPL);
                 *accord = 5;
                 return;
             } else
@@ -171,6 +218,7 @@ void rechercheNom(nodeNom node, int *accord) {
 
         else {
             int continuer = aleatoireAutre(2);
+            //si continuer = 0 alors on s'arrete au noeud où il y a une forme conjugué sinon on continue
             if (continuer == 0) {
                 int rd = aleatoireAutre(6);
                 if (rd == 0 && node->feuilleNomPointeur->invariableSG != NULL) {
@@ -276,6 +324,7 @@ void rechercheAccordNom(nodeNom node,int *accord, int* correct){
         else{
 
             int continuer = aleatoireAutre(2);
+            //si continuer = 0 alors on s'arrete au noeud où il y a une forme conjugué sinon on continue
             if(continuer == 0){
                 if(node->feuilleNomPointeur->invariableSG!=NULL && *accord == 0) {
                     printf("%s ", node->feuilleNomPointeur->invariableSG);

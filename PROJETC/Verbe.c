@@ -79,6 +79,48 @@ void upArbreVerbe(char* flechie, char* base, char* info, struct arbre_verbe* arb
     }
     return;
 }
+
+void rechercheBaseVerbe(nodeVerbe node) {
+    int nbAutre = 0;
+    nodeVerbe curseur = node;
+    while (curseur->autre) {
+        nbAutre++;
+        curseur = curseur->autre;
+    }
+    if (nbAutre != 0) {
+        int i = 0;
+        int rd = aleatoireAutre(nbAutre + 1);
+        while (i != rd) {
+            i++;
+            node = node->autre;
+        }
+    }
+    printf("%c",node->lettre);
+    if(node->conjugaison->SG!=NULL || node->conjugaison->PL !=NULL) {
+        if (!node->suite) {
+            return;
+        }
+        else {
+            int continuer = aleatoireAutre(2);
+            //si continuer = 0 alors on s'arrete au noeud où il y a une forme conjugué sinon on continue
+            if (continuer == 0)
+                return;
+            else {
+                node = node->suite;
+                rechercheBaseVerbe(node);
+            }
+        }
+    }
+    else{
+        if(!node->suite)
+            return;
+        else{
+            node = node->suite;
+            rechercheBaseVerbe(node);
+        }
+    }
+    return;
+}
 //permet de rechercher dans l'arbre verbe un verbe aléatoirement avec l'accord de la phrase
 void rechercheAccordVerbe(nodeVerbe node,int *accord, int *correct){
     int nbAutre =0;
@@ -110,6 +152,7 @@ void rechercheAccordVerbe(nodeVerbe node,int *accord, int *correct){
         }
         else {
             int continuer = aleatoireAutre(2);
+            //si continuer = 0 alors on s'arrete au noeud où il y a une forme conjugué sinon on continue
             if (continuer == 0) {
                 if (node->conjugaison->SG != NULL && (*accord == 0 || *accord == 2 || *accord == 4)) {
                     printf("%s ", node->conjugaison->SG);

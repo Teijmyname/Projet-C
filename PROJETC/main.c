@@ -4,7 +4,7 @@
 #include "Adjectif.h"
 #include "Verbe.h"
 //Définition des constantes regroupants les fichiers txt à ouvrir
-#define ENTREE "C:\\Users\\Romain SAMSON\\Desktop\\Projet-C\\PROJETC\\dico_10_lignes.txt"
+//#define ENTREE "C:\\Users\\Romain SAMSON\\Desktop\\Projet-C\\PROJETC\\dico_10_lignes.txt"
 #define TOUS "C:\\Users\\Romain SAMSON\\Desktop\\Projet-C\\PROJETC\\dictionnaire_non_accentue.txt"
 //initialisation des variables globales
 //accord permet de savoir l'accord à utilisé en paramètre de fonction
@@ -25,6 +25,7 @@ int main() {
     arbreAdj.racine = NULL;
     struct arbre_verbe arbreV;
     arbreV.racine = NULL;
+    int menu;
     int choix1;
     int i;
     int taille;
@@ -53,75 +54,130 @@ int main() {
         }
     }
     fclose(Fi);
-    //choisir dans le menu principal entre les differentes possilités de formation de phrase
+    //premier menu pour choisir entre phrase avec forme de base ou accordé
     do{
-        printf("\nVeuillez choisir entre ces 3 modeles de phrases:\n\n");
-        printf("Tapez 1 pour le modele: nom adjectif verbe nom\n");
-        printf("Tapez 2 pour le modele: nom qui verbe verbe nom adjectif\n");
-        printf("Tapez 3 pour le modele: nom verbre adverbe nom adjectif\n");
-        scanf("%d", &choix1);
-    }while(choix1<1 || choix1>3);
-    if(choix1==1){
-        printf("Vous venez de tapez 1 pour le modele: nom adjectif verbe nom !\n\n");
-        rechercheNom(arbreN.racine, &accord);
-        while(correct !=1){
-            nodeAdjectif node = arbreAdj.racine;
-            rechercheAccordAdjectif(node, &accord, &correct);
+        printf("\nVeuillez choisir entre phrase avec forme de base ou accordee:\n\n");
+        printf("Tapez 1 la phrase avec ses formes de base\n");
+        printf("Tapez 2 pour la phrase avec ses formes acccordees\n");
+        scanf("%d", &menu);
+    }while(menu<1 || menu>2);
+
+    if(menu ==1){
+        do{
+            printf("\nVeuillez choisir entre ces 3 modeles de phrases non accordees:\n\n");
+            printf("Tapez 1 pour le modele: nom adjectif verbe nom\n");
+            printf("Tapez 2 pour le modele: nom qui verbe verbe nom adjectif\n");
+            printf("Tapez 3 pour le modele: nom verbre adverbe nom adjectif\n");
+            scanf("%d", &choix1);
+        }while(choix1<1 || choix1>3);
+        if(choix1==1){
+            printf("Vous venez de tapez 1 pour le modele: nom adjectif verbe nom !\n\n");
+            rechercheBaseNom(arbreN.racine);
+            printf(" ");
+            rechercheBaseAdj(arbreAdj.racine);
+            printf(" ");
+            rechercheBaseVerbe(arbreV.racine);
+            printf(" ");
+            rechercheBaseNom(arbreN.racine);
         }
-        correct= 0;
-        while(correct !=1) {
-            nodeVerbe node = arbreV.racine;
-            rechercheAccordVerbe(node, &accord, &correct);
+        if(choix1 == 2){
+            printf("Vous venez de tapez 2 pour le modele: nom qui verbe verbe nom adjectif !\n\n");
+            rechercheBaseNom(arbreN.racine);
+            printf(" ");
+            printf("qui ");
+            rechercheBaseVerbe(arbreV.racine);
+            printf(" ");
+            rechercheBaseVerbe(arbreV.racine);
+            printf(" ");
+            rechercheBaseNom(arbreN.racine);
+            printf(" ");
+            rechercheBaseAdj(arbreAdj.racine);
         }
-        correct= 0;
-        while(correct !=1) {
-            nodeNom node = arbreN.racine;
-            rechercheAccordNom(node, &accord, &correct);
+        if(choix1 == 3){
+            printf("Vous venez de tapez 3 pour le modele: nom verbre adverbe nom adjectif\n\n");
+            rechercheBaseNom(arbreN.racine);
+            printf(" ");
+            rechercheBaseVerbe(arbreV.racine);
+            printf(" ");
+            rechercheAdv(arbreAdv.racine);
+            printf(" ");
+            rechercheBaseNom(arbreN.racine);
+            printf(" ");
+            rechercheBaseAdj(arbreAdj.racine);
         }
     }
-    if(choix1 == 2){
-        printf("Vous venez de tapez 2 pour le modele: nom qui verbe verbe nom adjectif !\n\n");
-        rechercheNom(arbreN.racine, &accord);
-        printf("qui ");
-        correct= 0;
-        while(correct !=1) {
-            nodeVerbe node = arbreV.racine;
-            rechercheAccordVerbe(node, &accord, &correct);
+
+    //choisir dans le menu principal entre les differentes possilités de formation de phrase accordé
+    if(menu == 2) {
+        do {
+            printf("\nVeuillez choisir entre ces 3 modeles de phrases:\n\n");
+            printf("Tapez 1 pour le modele: nom adjectif verbe nom\n");
+            printf("Tapez 2 pour le modele: nom qui verbe verbe nom adjectif\n");
+            printf("Tapez 3 pour le modele: nom verbre adverbe nom adjectif\n");
+            scanf("%d", &choix1);
+        } while (choix1 < 1 || choix1 > 3);
+        if (choix1 == 1) {
+            printf("Vous venez de tapez 1 pour le modele: nom adjectif verbe nom !\n\n");
+            rechercheNom(arbreN.racine, &accord);
+            while (correct != 1) {
+                nodeAdjectif node = arbreAdj.racine;
+                rechercheAccordAdjectif(node, &accord, &correct);
+            }
+            correct = 0;
+            while (correct != 1) {
+                nodeVerbe node = arbreV.racine;
+                rechercheAccordVerbe(node, &accord, &correct);
+            }
+            correct = 0;
+            while (correct != 1) {
+                nodeNom node = arbreN.racine;
+                rechercheAccordNom(node, &accord, &correct);
+            }
         }
-        correct= 0;
-        while(correct !=1) {
-            nodeVerbe node = arbreV.racine;
-            rechercheAccordVerbe(node, &accord, &correct);
+        if (choix1 == 2) {
+            printf("Vous venez de tapez 2 pour le modele: nom qui verbe verbe nom adjectif !\n\n");
+            rechercheNom(arbreN.racine, &accord);
+            printf("qui ");
+            correct = 0;
+            while (correct != 1) {
+                nodeVerbe node = arbreV.racine;
+                rechercheAccordVerbe(node, &accord, &correct);
+            }
+            correct = 0;
+            while (correct != 1) {
+                nodeVerbe node = arbreV.racine;
+                rechercheAccordVerbe(node, &accord, &correct);
+            }
+            correct = 0;
+            while (correct != 1) {
+                nodeNom node = arbreN.racine;
+                rechercheAccordNom(node, &accord, &correct);
+            }
+            correct = 0;
+            while (correct != 1) {
+                nodeAdjectif node = arbreAdj.racine;
+                rechercheAccordAdjectif(node, &accord, &correct);
+            }
         }
-        correct= 0;
-        while(correct !=1) {
-            nodeNom node = arbreN.racine;
-            rechercheAccordNom(node, &accord, &correct);
-        }
-        correct= 0;
-        while(correct !=1){
-            nodeAdjectif node = arbreAdj.racine;
-            rechercheAccordAdjectif(node, &accord, &correct);
-        }
-    }
-    if(choix1 == 3){
-        printf("Vous venez de tapez 3 pour le modele: nom verbre adverbe nom adjectif\n\n");
-        rechercheNom(arbreN.racine, &accord);
-        correct= 0;
-        while(correct !=1) {
-            nodeVerbe node = arbreV.racine;
-            rechercheAccordVerbe(node, &accord, &correct);
-        }
-        rechercheAdv(arbreAdv.racine);
-        correct= 0;
-        while(correct !=1) {
-            nodeNom node = arbreN.racine;
-            rechercheAccordNom(node, &accord, &correct);
-        }
-        correct= 0;
-        while(correct !=1){
-            nodeAdjectif node = arbreAdj.racine;
-            rechercheAccordAdjectif(node, &accord, &correct);
+        if (choix1 == 3) {
+            printf("Vous venez de tapez 3 pour le modele: nom verbre adverbe nom adjectif\n\n");
+            rechercheNom(arbreN.racine, &accord);
+            correct = 0;
+            while (correct != 1) {
+                nodeVerbe node = arbreV.racine;
+                rechercheAccordVerbe(node, &accord, &correct);
+            }
+            rechercheAdv(arbreAdv.racine);
+            correct = 0;
+            while (correct != 1) {
+                nodeNom node = arbreN.racine;
+                rechercheAccordNom(node, &accord, &correct);
+            }
+            correct = 0;
+            while (correct != 1) {
+                nodeAdjectif node = arbreAdj.racine;
+                rechercheAccordAdjectif(node, &accord, &correct);
+            }
         }
     }
     // on libère tout l'espace qu'on a alloué
@@ -135,4 +191,3 @@ int main() {
 
     return 0;
 }
-
