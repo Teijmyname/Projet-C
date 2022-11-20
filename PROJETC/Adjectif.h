@@ -34,4 +34,5 @@ nodeAdjectif createNodeAdjetif(char );
 void upArbreAdjectif(char* , char* , char* , struct arbre_adjectif* );
 void rechercheAdjectif(nodeAdjectif ,int *);
 void rechercheAccordAdjectif(nodeAdjectif ,int *, int*);
+void rechercheBaseAdj(nodeAdjectif );
 #endif //MAIN_C_ADJECTIF_H

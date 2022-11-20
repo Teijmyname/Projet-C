@@ -89,6 +89,7 @@ void rechercheAdv(nodeAdverbe node){
         else{
             int continuer = aleatoireAutre(2);
             if(continuer == 0){
+                //si continuer = 0 alors on s'arrete au noeud où il y a une forme conjugué sinon on continue
                 printf("%s ",node->feuilleAdverbe);
                 return;
             }

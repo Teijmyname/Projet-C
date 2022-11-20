@@ -33,5 +33,6 @@ void rechercheAccordNom(nodeNom ,int *, int* );
 void freeNodeNom(nodeNom );
 nodeNom createNodeNom(char );
 void upArbreNom(char*, char*, char*, struct arbre_nom*);
-void meme();
+
+void rechercheBaseNom(nodeNom);
 #endif //MAIN_C_NOM_H
