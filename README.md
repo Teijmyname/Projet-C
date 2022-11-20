@@ -1,8 +1,4 @@
 # Projet-C
-Pour acceder au code, sans erreur d'ouverture de fichier, il faut entrer l'adresse du fichier dictionnaire en chemin absolu/complet
-Pour ce faire, il faut récupérer le chemin complet à partir du dossier du projet et y ajouter le nom du dictionnaire(pour plus de détail voir démonstration dans le rapport)
-
-Désormais, nous pouvons lancer notre programme,
 
 Premièrement, un menu s'affiche, nous avons le choix de choisir entre phrase avec forme de base en tapant 1 ou accordé en tapant 2
 
